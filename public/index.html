@@ -3,66 +3,239 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Download GEOTRANS — Aplikasi Absensi</title>
+  <meta name="description" content="Unduh aplikasi GEOTRANS (aplikasi absensi) versi terbaru. File APK resmi, unduhan langsung dari Google Drive.">
+  <meta name="theme-color" content="#0e6b43">
+  <title>Download GEOTRANS - Aplikasi Absensi</title>
   <style>
     :root {
-      --bg: #f5f6f8;
-      --card: #ffffff;
-      --text: #1a2330;
-      --muted: #6b7480;
-      --primary: #1565c0;
-      --primary-dark: #0d47a1;
-      --radius: 16px;
+      --bg: #eef1ef;
+      --surface: #ffffff;
+      --surface-2: #f5f7f6;
+      --text: #171c22;
+      --text-2: #3f4852;
+      --muted: #5c6670;
+      --accent-fill: #0e6b43;
+      --accent-hover: #0a5736;
+      --accent-text: #0e6b43;
+      --accent-soft: rgba(14, 107, 67, .08);
+      --line: rgba(23, 28, 34, .10);
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --ring: rgba(14, 107, 67, .35);
+      --shadow: 0 1px 2px rgba(23, 28, 34, .05), 0 24px 48px -28px rgba(23, 28, 34, .22);
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0c0f0d;
+        --surface: #131714;
+        --surface-2: #1a201b;
+        --text: #eef2ef;
+        --text-2: #b9c2bb;
+        --muted: #94a098;
+        --accent-fill: #0e6b43;
+        --accent-hover: #0c5c39;
+        --accent-text: #34b47d;
+        --accent-soft: rgba(52, 180, 125, .12);
+        --line: rgba(238, 242, 239, .10);
+        --ring: rgba(52, 180, 125, .45);
+        --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 24px 48px -28px rgba(0, 0, 0, .6);
+      }
+    }
+
     * { box-sizing: border-box; margin: 0; }
     html, body { height: 100%; }
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: var(--bg);
+      font-family: system-ui, -apple-system, "Segoe UI Variable", "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(110% 55% at 50% -8%, var(--accent-soft), transparent 62%),
+        var(--bg);
       color: var(--text);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      min-height: 100dvh;
+      -webkit-font-smoothing: antialiased;
     }
+
     .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 40px 28px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      padding: 44px 28px 32px;
       max-width: 420px;
       width: 100%;
-      text-align: center;
-      box-shadow: 0 12px 32px rgba(20, 30, 50, .10);
     }
-    h1 { font-size: 2rem; letter-spacing: .02em; }
-    .sub { color: var(--muted); margin: 6px 0 20px; font-weight: 500; }
-    .desc { font-size: .95rem; line-height: 1.6; color: var(--muted); margin-bottom: 28px; }
+    @media (min-width: 480px) {
+      .card { padding: 48px 40px 36px; }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 7vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: 1.05;
+    }
+    .sub {
+      margin-top: 6px;
+      color: var(--accent-text);
+      font-weight: 600;
+      font-size: .95rem;
+    }
+    .desc {
+      margin-top: 18px;
+      font-size: .95rem;
+      line-height: 1.65;
+      color: var(--text-2);
+      max-width: 36ch;
+    }
+
+    .file-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: 28px;
+    }
+    .meta-item {
+      background: var(--surface-2);
+      padding: 14px 10px;
+      text-align: center;
+    }
+    .meta-item .label {
+      display: block;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .meta-item .value {
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
     .btn {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
       width: 100%;
-      padding: 16px;
-      background: var(--primary);
+      padding: 16px 20px;
+      background: var(--accent-fill);
       color: #fff;
       font-size: 1.05rem;
       font-weight: 700;
-      border-radius: 12px;
+      border-radius: var(--radius-md);
       text-decoration: none;
-      transition: background .15s;
+      border: 1px solid transparent;
+      transition: background-color .15s ease;
     }
-    .btn:hover { background: var(--primary-dark); }
-    .meta {
+    .btn:hover { background: var(--accent-hover); }
+    .btn:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+    }
+    .note {
       margin-top: 14px;
-      font-size: .85rem;
-      color: var(--muted);
-    }
-    footer {
-      margin-top: 28px;
       font-size: .8rem;
       color: var(--muted);
-      line-height: 1.8;
+      text-align: center;
+      line-height: 1.5;
     }
+
+    details {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--text-2);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      margin-left: auto;
+      font-weight: 500;
+      color: var(--accent-text);
+    }
+    details[open] summary::after { content: "−"; }
+    .steps {
+      margin-top: 14px;
+      display: grid;
+      gap: 12px;
+      font-size: .88rem;
+      line-height: 1.55;
+      color: var(--text-2);
+    }
+    .steps ol {
+      list-style: none;
+      counter-reset: step;
+      display: grid;
+      gap: 8px;
+    }
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+    .steps li::before {
+      content: counter(step);
+      flex: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      font-size: .72rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(2px);
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+    footer a {
+      color: var(--accent-text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover { text-decoration: underline; }
+    footer a:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
     @media (prefers-reduced-motion: no-preference) {
+      .card { animation: rise .5s cubic-bezier(.16, 1, .3, 1) both; }
       .btn:active { transform: scale(.98); }
+      .btn { transition: background-color .15s ease, transform .12s ease; }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -71,21 +244,60 @@
     <h1>GEOTRANS</h1>
     <p class="sub">Aplikasi Absensi</p>
     <p class="desc">
-      Aplikasi absensi yang memudahkan pencatatan kehadiran secara cepat dan akurat.
-      Unduh dan pasang di perangkat Android kamu.
+      Aplikasi absensi yang memudahkan pencatatan kehadiran secara cepat dan
+      akurat dari perangkat Android Anda.
     </p>
 
-    <!-- TODO: isi DRIVE_ID -->
+    <div class="file-meta" aria-label="Informasi file">
+      <div class="meta-item">
+        <span class="label">Versi</span>
+        <span class="value">1.0.0</span>
+      </div>
+      <div class="meta-item">
+        <span class="label">Ukuran</span>
+        <span class="value">48 MB</span>
+      </div>
+      <div class="meta-item">
+        <span class="label">Format</span>
+        <span class="value">APK</span>
+      </div>
+    </div>
+
     <a class="btn" id="download" rel="noopener" target="_blank"
-       href="https://drive.google.com/file/d/1ukCxU973J1WD3-L94w3LITfh-e_A5I24/view?usp=sharing">
+       href="https://drive.usercontent.google.com/download?id=1ukCxU973J1WD3-L94w3LITfh-e_A5I24&export=download&authuser=0">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3v12"/>
+        <path d="m7 11 5 5 5-5"/>
+        <path d="M4 20h16"/>
+      </svg>
       Download APK
     </a>
-    <p class="meta">Versi 1.0.0 &middot; 48 MB</p>
+    <p class="note">Tautan resmi, file diunduh langsung dari Google Drive.</p>
+
+    <details>
+      <summary>Cara pasang APK</summary>
+      <div class="steps">
+        <ol>
+          <li>Unduh file APK melalui tombol di atas.</li>
+          <li>Buka file tersebut di aplikasi Berkas (File Manager).</li>
+          <li>Izinkan "Instal dari sumber tidak dikenal" bila diminta.</li>
+        </ol>
+      </div>
+    </details>
 
     <footer>
       Android 2017 ke atas<br>
-      Kontak: 081384180485
+      Butuh bantuan? <a href="tel:+6281384180485">0813 8418 0485</a>
     </footer>
   </main>
+
+  <script>
+    // Ganti ID file di satu tempat ini untuk memperbarui versi APK.
+    const DRIVE_ID = "1ukCxU973J1WD3-L94w3LITfh-e_A5I24";
+    document.getElementById("download").href =
+      "https://drive.usercontent.google.com/download?id=" + DRIVE_ID +
+      "&export=download&authuser=0";
+  </script>
 </body>
 </html>

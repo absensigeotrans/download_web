@@ -1,7 +1,5 @@
 export default {
-  async fetch() {
-    return new Response("GEOTRANS", {
-      headers: { "content-type": "text/plain; charset=utf-8" },
-    });
+  async fetch(request, env) {
+    return env.ASSETS.fetch(request);
   },
 };
