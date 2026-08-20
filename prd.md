@@ -1,13 +1,15 @@
 # PRD — Halaman Download GEOTRANS
 
 ## 1. Overview
-Satu halaman landing untuk mendownload file APK aplikasi **GEOTRANS** (aplikasi absensi). File disimpan di Google Drive, halaman di-host di Cloudflare Workers.
+Satu halaman landing serbaguna untuk mendownload file APK aplikasi **GEOTRANS** (aplikasi absensi) dan kumpulan tautan website/portal resmi yang mudah dikustomisasi. File disimpan di Google Drive, halaman di-host di Cloudflare Workers.
 
 ## 2. Goals
-- Pengguna membuka halaman → melihat info aplikasi → klik tombol → file APK langsung terunduh.
+- Pengguna membuka halaman → dapat memilih tab **Download APK** atau **Kumpulan Website**.
+- Tab APK: melihat info aplikasi → klik tombol → file APK langsung terunduh.
+- Tab Website: melihat daftar portal web/sistem informasi → klik kartu → membuka tautan di tab baru.
 - Tampilan mobile-first (pengguna absensi memakai HP).
 - Bahasa antarmuka: Indonesia.
-- Satu versi aplikasi aktif (link Drive tunggal).
+- Satu versi aplikasi aktif (link Drive tunggal) & daftar tautan web yang mudah diedit di JavaScript.
 
 ## 3. Non-goals
 - Admin panel, login, user management.

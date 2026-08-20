@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Unduh aplikasi GEOTRANS (aplikasi absensi) versi terbaru. File APK resmi, unduhan langsung dari Google Drive.">
+  <meta name="description" content="Portal unduh aplikasi GEOTRANS (aplikasi absensi) dan kumpulan tautan website resmi.">
   <meta name="theme-color" content="#0e6b43">
-  <title>Download GEOTRANS - Aplikasi Absensi</title>
+  <title>GEOTRANS - Download APK & Portal Website</title>
   <style>
     :root {
       --bg: #eef1ef;
@@ -21,6 +21,7 @@
       --line: rgba(23, 28, 34, .10);
       --radius-lg: 20px;
       --radius-md: 12px;
+      --radius-sm: 8px;
       --ring: rgba(14, 107, 67, .35);
       --shadow: 0 1px 2px rgba(23, 28, 34, .05), 0 24px 48px -28px rgba(23, 28, 34, .22);
     }
@@ -63,16 +64,19 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
       border: 1px solid var(--line);
-      padding: 44px 28px 32px;
-      max-width: 420px;
+      padding: 38px 24px 28px;
+      max-width: 440px;
       width: 100%;
     }
     @media (min-width: 480px) {
-      .card { padding: 48px 40px 36px; }
+      .card { padding: 44px 36px 32px; }
     }
 
+    .header {
+      margin-bottom: 22px;
+    }
     h1 {
-      font-size: clamp(2rem, 7vw, 2.5rem);
+      font-size: clamp(1.9rem, 7vw, 2.35rem);
       font-weight: 800;
       letter-spacing: -.02em;
       line-height: 1.05;
@@ -83,14 +87,59 @@
       font-weight: 600;
       font-size: .95rem;
     }
-    .desc {
-      margin-top: 18px;
-      font-size: .95rem;
-      line-height: 1.65;
-      color: var(--text-2);
-      max-width: 36ch;
+
+    /* Tab Switcher / Segmented Control */
+    .tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      margin-bottom: 22px;
+    }
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 12px;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all .15s ease;
+      font-family: inherit;
+    }
+    .tab-btn:hover {
+      color: var(--text);
+    }
+    .tab-btn[aria-selected="true"] {
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+    }
+    .tab-btn:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 1px;
     }
 
+    [role="tabpanel"][hidden] {
+      display: none;
+    }
+
+    .desc {
+      font-size: .92rem;
+      line-height: 1.6;
+      color: var(--text-2);
+    }
+
+    /* File Metadata Box */
     .file-meta {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -99,11 +148,11 @@
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
       overflow: hidden;
-      margin-top: 28px;
+      margin-top: 22px;
     }
     .meta-item {
       background: var(--surface-2);
-      padding: 14px 10px;
+      padding: 12px 8px;
       text-align: center;
     }
     .meta-item .label {
@@ -124,12 +173,12 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      margin-top: 24px;
+      margin-top: 20px;
       width: 100%;
-      padding: 16px 20px;
+      padding: 15px 20px;
       background: var(--accent-fill);
       color: #fff;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
       border-radius: var(--radius-md);
       text-decoration: none;
@@ -142,7 +191,7 @@
       outline-offset: 2px;
     }
     .note {
-      margin-top: 14px;
+      margin-top: 12px;
       font-size: .8rem;
       color: var(--muted);
       text-align: center;
@@ -150,7 +199,7 @@
     }
 
     details {
-      margin-top: 26px;
+      margin-top: 22px;
       border-top: 1px solid var(--line);
       padding-top: 16px;
     }
@@ -208,13 +257,104 @@
       transform: translateY(2px);
     }
 
+    /* Website Collection (Tab 2) */
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .15s ease, background-color .15s ease, transform .12s ease;
+    }
+    .link-card:hover {
+      border-color: var(--accent-text);
+      background: var(--surface);
+      transform: translateY(-1px);
+    }
+    .link-card:active {
+      transform: translateY(0);
+    }
+    .link-card:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+    }
+    .link-main {
+      min-width: 0;
+      flex: 1;
+    }
+    .link-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+    .link-title {
+      font-weight: 700;
+      font-size: .96rem;
+      color: var(--text);
+    }
+    .link-badge {
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      letter-spacing: .02em;
+    }
+    .link-desc {
+      font-size: .82rem;
+      color: var(--text-2);
+      line-height: 1.45;
+      margin-bottom: 4px;
+    }
+    .link-url {
+      font-size: .75rem;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .link-action {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--accent-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color .15s ease, color .15s ease, transform .15s ease;
+    }
+    .link-card:hover .link-action {
+      background: var(--accent-fill);
+      color: #fff;
+      border-color: var(--accent-fill);
+      transform: translateX(2px);
+    }
+
     footer {
-      margin-top: 28px;
-      padding-top: 20px;
+      margin-top: 26px;
+      padding-top: 18px;
       border-top: 1px solid var(--line);
       font-size: .82rem;
       color: var(--muted);
-      line-height: 1.9;
+      line-height: 1.8;
     }
     footer a {
       color: var(--accent-text);
@@ -241,50 +381,85 @@
 </head>
 <body>
   <main class="card">
-    <h1>GEOTRANS</h1>
-    <p class="sub">Aplikasi Absensi</p>
-    <p class="desc">
-      Aplikasi absensi yang memudahkan pencatatan kehadiran secara cepat dan
-      akurat dari perangkat Android Anda.
-    </p>
+    <header class="header">
+      <h1>GEOTRANS</h1>
+      <p class="sub">Portal & Aplikasi Absensi</p>
+    </header>
 
-    <div class="file-meta" aria-label="Informasi file">
-      <div class="meta-item">
-        <span class="label">Versi</span>
-        <span class="value">1.0.0</span>
-      </div>
-      <div class="meta-item">
-        <span class="label">Ukuran</span>
-        <span class="value">48 MB</span>
-      </div>
-      <div class="meta-item">
-        <span class="label">Format</span>
-        <span class="value">APK</span>
-      </div>
+    <!-- Tab Switcher -->
+    <div class="tabs" role="tablist" aria-label="Pilihan Navigasi">
+      <button class="tab-btn" id="tab-apk" role="tab" aria-selected="true" aria-controls="panel-apk" tabindex="0">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"/>
+          <path d="m7 11 5 5 5-5"/>
+          <path d="M4 20h16"/>
+        </svg>
+        Download APK
+      </button>
+      <button class="tab-btn" id="tab-web" role="tab" aria-selected="false" aria-controls="panel-web" tabindex="-1">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+          <path d="M2 12h20"/>
+        </svg>
+        Kumpulan Website
+      </button>
     </div>
 
-    <a class="btn" id="download" rel="noopener" target="_blank"
-       href="https://drive.usercontent.google.com/download?id=1ukCxU973J1WD3-L94w3LITfh-e_A5I24&export=download&authuser=0">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
-           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 3v12"/>
-        <path d="m7 11 5 5 5-5"/>
-        <path d="M4 20h16"/>
-      </svg>
-      Download APK
-    </a>
-    <p class="note">Tautan resmi, file diunduh langsung dari Google Drive.</p>
+    <!-- Panel 1: Download APK -->
+    <section id="panel-apk" role="tabpanel" aria-labelledby="tab-apk">
+      <p class="desc">
+        Aplikasi absensi resmi untuk memudahkan pencatatan kehadiran secara cepat dan akurat langsung dari perangkat Android Anda.
+      </p>
 
-    <details>
-      <summary>Cara pasang APK</summary>
-      <div class="steps">
-        <ol>
-          <li>Unduh file APK melalui tombol di atas.</li>
-          <li>Buka file tersebut di aplikasi Berkas (File Manager).</li>
-          <li>Izinkan "Instal dari sumber tidak dikenal" bila diminta.</li>
-        </ol>
+      <div class="file-meta" aria-label="Informasi file">
+        <div class="meta-item">
+          <span class="label">Versi</span>
+          <span class="value">1.0.0</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Ukuran</span>
+          <span class="value">48 MB</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Format</span>
+          <span class="value">APK</span>
+        </div>
       </div>
-    </details>
+
+      <a class="btn" id="download" rel="noopener" target="_blank"
+         href="https://drive.usercontent.google.com/download?id=1ukCxU973J1WD3-L94w3LITfh-e_A5I24&export=download&authuser=0">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"/>
+          <path d="m7 11 5 5 5-5"/>
+          <path d="M4 20h16"/>
+        </svg>
+        Download APK
+      </a>
+      <p class="note">Tautan resmi, file diunduh langsung dari Google Drive.</p>
+
+      <details>
+        <summary>Cara pasang APK</summary>
+        <div class="steps">
+          <ol>
+            <li>Unduh file APK melalui tombol di atas.</li>
+            <li>Buka file tersebut di aplikasi Berkas (File Manager).</li>
+            <li>Izinkan "Instal dari sumber tidak dikenal" bila diminta.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- Panel 2: Kumpulan Website -->
+    <section id="panel-web" role="tabpanel" aria-labelledby="tab-web" hidden>
+      <p class="desc">
+        Daftar tautan dan sistem informasi resmi GEOTRANS yang dapat diakses melalui browser Anda.
+      </p>
+
+      <!-- Tempat merender daftar website kustom -->
+      <div id="links-container" class="link-list" aria-label="Daftar Website"></div>
+    </section>
 
     <footer>
       Android 2017 ke atas<br>
@@ -293,11 +468,104 @@
   </main>
 
   <script>
-    // Ganti ID file di satu tempat ini untuk memperbarui versi APK.
+    // =========================================================================
+    // 1. KONFIGURASI APK (Google Drive)
+    // =========================================================================
     const DRIVE_ID = "1ukCxU973J1WD3-L94w3LITfh-e_A5I24";
-    document.getElementById("download").href =
-      "https://drive.google.com/file/d/122uVerX0hp3RUjAgGIp5EcU2bUfJ4PLw/view?export=download" + DRIVE_ID +
-      "&export=download&authuser=0";
+    const downloadBtn = document.getElementById("download");
+    if (downloadBtn) {
+      downloadBtn.href = `https://drive.usercontent.google.com/download?id=${DRIVE_ID}&export=download&authuser=0`;
+    }
+
+    // =========================================================================
+    // 2. KUMPULAN WEBSITE (BISA DIKOSTUMISASI DENGAN MUDAH)
+    // ponytail: Link dikelola langsung dalam array objek sederhana tanpa backend/database.
+    // Upgrade path: Jika butuh link dinamis per divisi, bisa fetch dari file json statis.
+    // =========================================================================
+    const CUSTOM_WEBSITES = [
+      {
+        title: "Portal Absensi Web",
+        desc: "Akses presensi langsung via peramban web",
+        url: "https://absensi.geotrans.id",
+        badge: "Utama"
+      },
+      {
+        title: "Dashboard Admin",
+        desc: "Kelola pegawai, jadwal shift, & rekap absensi",
+        url: "https://admin.geotrans.id",
+        badge: "Admin"
+      },
+      {
+        title: "Panduan Pengguna",
+        desc: "Petunjuk operasional sistem & solusi kendala",
+        url: "https://panduan.geotrans.id"
+      }
+    ];
+
+    // Render daftar website
+    const linksContainer = document.getElementById("links-container");
+    if (linksContainer) {
+      linksContainer.innerHTML = CUSTOM_WEBSITES.map(site => `
+        <a class="link-card" href="${site.url}" target="_blank" rel="noopener noreferrer">
+          <div class="link-main">
+            <div class="link-head">
+              <span class="link-title">${site.title}</span>
+              ${site.badge ? `<span class="link-badge">${site.badge}</span>` : ''}
+            </div>
+            ${site.desc ? `<p class="link-desc">${site.desc}</p>` : ''}
+            <span class="link-url">${site.url.replace(/^https?:\/\//, '')}</span>
+          </div>
+          <div class="link-action" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </div>
+        </a>
+      `).join("");
+    }
+
+    // =========================================================================
+    // 3. TAB SWITCHER LOGIC
+    // =========================================================================
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+    function selectTab(targetTab) {
+      tabs.forEach(tab => {
+        const isSelected = (tab === targetTab);
+        tab.setAttribute("aria-selected", isSelected ? "true" : "false");
+        tab.tabIndex = isSelected ? 0 : -1;
+      });
+
+      const targetPanelId = targetTab.getAttribute("aria-controls");
+      panels.forEach(panel => {
+        panel.hidden = (panel.id !== targetPanelId);
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => selectTab(tab));
+
+      // Keyboard navigation (Panah Kiri / Kanan)
+      tab.addEventListener("keydown", (e) => {
+        let nextIndex = null;
+        const currentIndex = tabs.indexOf(tab);
+
+        if (e.key === "ArrowRight") {
+          nextIndex = (currentIndex + 1) % tabs.length;
+        } else if (e.key === "ArrowLeft") {
+          nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        }
+
+        if (nextIndex !== null) {
+          e.preventDefault();
+          tabs[nextIndex].focus();
+          selectTab(tabs[nextIndex]);
+        }
+      });
+    });
   </script>
 </body>
 </html>
