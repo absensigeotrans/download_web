@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": ["../../../src/worker.js"],
+  "sourceRoot": "D:\\Web-Client\\download\\.wrangler\\tmp\\deploy-jcrdUh",
+  "sourcesContent": ["export default {\n  async fetch(request, env) {\n    return env.ASSETS.fetch(request);\n  },\n};"],
+  "mappings": ";AAAA,IAAO,iBAAQ;AAAA,EACb,MAAM,MAAM,SAAS,KAAK;AACxB,WAAO,IAAI,OAAO,MAAM,OAAO;AAAA,EACjC;AACF;",
+  "names": []
+}
