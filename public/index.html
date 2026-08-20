@@ -198,8 +198,69 @@
       line-height: 1.5;
     }
 
+    /* Incompatible Device / Fallback Box */
+    .incompatible-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: var(--surface-2);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color .15s ease;
+    }
+    .incompatible-box:hover {
+      border-color: var(--accent-text);
+    }
+    .incompatible-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--text);
+    }
+    .incompatible-icon {
+      color: var(--accent-text);
+      flex-shrink: 0;
+    }
+    .incompatible-desc {
+      font-size: .82rem;
+      color: var(--text-2);
+      line-height: 1.45;
+    }
+    .btn-alt {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 4px;
+      padding: 11px 16px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--accent-text);
+      font-size: .88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all .15s ease;
+    }
+    .btn-alt:hover {
+      background: var(--accent-fill);
+      color: #ffffff;
+      border-color: var(--accent-fill);
+    }
+    .btn-alt:active {
+      transform: scale(.99);
+    }
+    .btn-alt:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 1px;
+    }
+
     details {
-      margin-top: 22px;
+      margin-top: 20px;
       border-top: 1px solid var(--line);
       padding-top: 16px;
     }
@@ -439,11 +500,35 @@
       </a>
       <p class="note">Tautan resmi, file diunduh langsung dari Google Drive.</p>
 
+      <!-- Link Alternatif untuk Perangkat Tidak Kompatibel -->
+      <div class="incompatible-box">
+        <div class="incompatible-head">
+          <svg class="incompatible-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          Perangkat tidak kompatibel?
+        </div>
+        <p class="incompatible-desc">
+          Jika tombol utama bermasalah atau aplikasi tidak cocok dengan tipe HP Anda, gunakan tautan alternatif:
+        </p>
+        <a class="btn-alt" id="download-alt" rel="noopener" target="_blank"
+           href="https://drive.google.com/file/d/16dKNLphPd8VLUxAwEHIxoerlAdaQBbuf/view?usp=drive_link">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          Download Link Alternatif
+        </a>
+      </div>
+
       <details>
         <summary>Cara pasang APK</summary>
         <div class="steps">
           <ol>
-            <li>Unduh file APK melalui tombol di atas.</li>
+            <li>Unduh file APK melalui salah satu tombol di atas.</li>
             <li>Buka file tersebut di aplikasi Berkas (File Manager).</li>
             <li>Izinkan "Instal dari sumber tidak dikenal" bila diminta.</li>
           </ol>
@@ -471,10 +556,18 @@
     // =========================================================================
     // 1. KONFIGURASI APK (Google Drive)
     // =========================================================================
+    // Link Utama (Direct Download)
     const DRIVE_ID = "1ukCxU973J1WD3-L94w3LITfh-e_A5I24";
     const downloadBtn = document.getElementById("download");
     if (downloadBtn) {
       downloadBtn.href = `https://drive.usercontent.google.com/download?id=${DRIVE_ID}&export=download&authuser=0`;
+    }
+
+    // Link Alternatif (Jika perangkat tidak kompatibel / link utama terkendala)
+    const ALT_DOWNLOAD_URL = "https://drive.google.com/file/d/16dKNLphPd8VLUxAwEHIxoerlAdaQBbuf/view?usp=drive_link";
+    const downloadAltBtn = document.getElementById("download-alt");
+    if (downloadAltBtn) {
+      downloadAltBtn.href = ALT_DOWNLOAD_URL;
     }
 
     // =========================================================================

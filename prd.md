@@ -43,7 +43,8 @@ download/
 - Judul: **GEOTRANS**
 - Subjudul: "Aplikasi Absensi"
 - Deskripsi singkat aplikasi
-- Tombol besar: **Download APK**
+- Tombol utama: **Download APK** (Direct stream)
+- Tombol/box alternatif: **Download Link Alternatif** (Untuk perangkat tidak kompatibel / kendala unduhan)
 - Informasi file: ukuran (MB) + nomor versi
 - Footer: versi Android minimum, kontak/support
 
